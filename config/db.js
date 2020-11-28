@@ -6,15 +6,11 @@ const sequelize = new Sequelize(
     database.username,
     database.password, {
         host: database.host,
-        dialect: 'mysql'
+        dialect: 'mysql',
+        define:{
+            timestamps: false
+        }
     }
 );
 
-const connection = async () =>{
-    sequelize.sync().then(() => {
-        console.log('nos conectamos a la DB');
-    }).catch(error => console.log('se ha producido un error', error))
-}
-
-module.exports = connection;
-global.sequelize = sequelize;
+module.exports = sequelize;

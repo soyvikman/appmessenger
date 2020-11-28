@@ -1,17 +1,18 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./../database/db');
+const {DataTypes } = require('sequelize');
+const sequelize = require('./../config/db')
 
-module.exports = sequelize.define('Message', {
+module.exports = sequelize.define('message', {
     message_id: {
         type:DataTypes.INTEGER,
         allowNull: false,
-        unique: true
+        unique: true,
+        primaryKey: true,
     },
     message_body: {
         type:DataTypes.STRING,
         allowNull: false
     },
-    message_user_id: {
+    message_id_user: {
         type:DataTypes.INTEGER,
         allowNull: false
     },
@@ -19,5 +20,7 @@ module.exports = sequelize.define('Message', {
         type: DataTypes.DATE,
         allowNull: false
     }
+}, {
+    tableName: "message"
 })
 

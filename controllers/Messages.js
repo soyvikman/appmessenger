@@ -1,10 +1,9 @@
-const Message = require('./../models/Message');
-const {Sequelize, DataTypes} = require('sequelize');
-const sequelize = new Sequelize('mysql::memory:');
+const message = require('./../models/Message');
+
 
 exports.messages = async (req,res)=>{
     try{
-        const results = await Message.findAll()
+        const results = await message.findAll()
         res.json(results)
     } catch (e){
         console.log(e)
